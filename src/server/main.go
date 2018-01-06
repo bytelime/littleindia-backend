@@ -6,7 +6,7 @@ import (
 	//"github.com/kataras/iris/core/host"
 	"github.com/kataras/iris/middleware/recover"
 	//"net/url"
-	//"os"
+	"os"
 )
 
 func main() {
