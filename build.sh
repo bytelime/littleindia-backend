@@ -1,1 +1,1 @@
-go get #GOGETA
+exec go get
