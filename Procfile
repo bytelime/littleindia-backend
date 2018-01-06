@@ -1,1 +1,1 @@
-web: /bin/server
+web: /var/app/current/bin/server
