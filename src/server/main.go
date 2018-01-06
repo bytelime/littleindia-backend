@@ -43,6 +43,6 @@ func main() {
      	port = "5000"
      }
 
-	app.Run(iris.Addr("0.0.0.0:" + port))
+	app.Run(iris.Addr(":"+port))
 
 }

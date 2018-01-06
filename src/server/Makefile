@@ -21,5 +21,5 @@ install: clean ## Compile sources and build binary
 
 run: install ## Run your application
 	@echo "--> running application..."
-	@/var/app/current/bin/$(BINARY_NAME)
+	@/$(GOBIN)/$(BINARY_NAME)
 
