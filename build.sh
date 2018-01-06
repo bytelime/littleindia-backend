@@ -1,3 +1,3 @@
-cd /var/app/current/src/server
+cd /var/app/staging/src/server
 go get
-make install
+make run
