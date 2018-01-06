@@ -1,7 +1,3 @@
-echo "buildeando esta pija"
-cd ./src/server
-echo "go get"
+cd /var/app/current/src/server
 go get
-echo "la concha de tu vieja"
 make install
-echo "lo hice"
