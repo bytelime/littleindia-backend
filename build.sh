@@ -1,1 +1,1 @@
-exec go get
+go get
