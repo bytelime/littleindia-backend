@@ -37,6 +37,12 @@ func main() {
 	app.Run(iris.TLS("localhost:7668", "certs/mycert.cert", "certs/mykey.key"))
 	*/
 
-	app.Run(iris.Addr("0.0.0.0:5000"))
+	 port := os.Getenv("PORT")
+
+     if port == "" {
+     	port = "5000"
+     }
+
+	app.Run(iris.Addr("0.0.0.0:" + port))
 
 }
