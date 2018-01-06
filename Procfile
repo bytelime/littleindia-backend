@@ -1,1 +1,1 @@
-web: $GOPATH/bin
+web: /var/app/current/bin
