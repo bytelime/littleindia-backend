@@ -6,7 +6,7 @@ import (
 	//"github.com/kataras/iris/core/host"
 	"github.com/kataras/iris/middleware/recover"
 	//"net/url"
-	"os"
+	//"os"
 )
 
 func main() {
@@ -37,6 +37,6 @@ func main() {
 	app.Run(iris.TLS("localhost:7668", "certs/mycert.cert", "certs/mykey.key"))
 	*/
 
-	app.Run(iris.Addr(os.Getenv("PORT")))
+	app.Run(iris.Addr("0.0.0.0:80"))
 
 }

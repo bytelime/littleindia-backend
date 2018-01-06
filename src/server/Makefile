@@ -1,6 +1,6 @@
 # VARIABLES
 PACKAGE=""
-BINARY_NAME="main-server"
+BINARY_NAME="server"
 
 default: run
 
