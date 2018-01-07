@@ -1,1 +1,1 @@
-web: /var/app/current/bin
+web: /var/app/staging/bin
