@@ -1,1 +1,1 @@
-web: /var/app/current/deployed-bin/server
+web: /var/app/staging/deployed-bin/server
