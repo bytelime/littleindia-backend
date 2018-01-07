@@ -23,3 +23,9 @@ run: install ## Run your application
 	@echo "--> running application..."
 	@/$(GOBIN)/$(BINARY_NAME)
 
+deploy: clean
+	@echo "--> preparing deploy..."
+	@GOARCH=amd64 GOOS=linux go build $(PACKAGE) -o $(GOBIN)/$(BINARY_NAME) || (echo "Compilation error" && exit 1)
+	@echo "deploy OK, now push the /bin/server and use eb deploy"
+	##falta hacer el webpack?
+
