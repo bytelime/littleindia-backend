@@ -28,6 +28,12 @@ deploy: clean
 	@GOARCH=amd64 GOOS=linux go build $(PACKAGE) -o deployed-bin/$(BINARY_NAME) || (echo "Compilation error" && exit 1)
 	@echo "--> testing..."
 	@go test -v ./tests
-	@echo "deploy OK, now push the /bin/server and use eb deploy"
-	##falta hacer el webpack?
+	@echo "--> packing js..."
+	@webpack
+	@echo "--> deploying..."
+	@git add .
+	@git commit -m "deploy"
+	@git push
+	@eb deploy
+	@echo "Deploy ready"
 
