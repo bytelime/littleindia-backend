@@ -1,3 +1,3 @@
 cd /var/app/current/src/server
 go get
-make install
+go build -o ./../../bin/server
