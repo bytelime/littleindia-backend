@@ -1,1 +1,1 @@
-web: /var/app/current/src/server/deployed-bin/server
+web: $(GOPATH)/src/server/deployed-bin/server
