@@ -11,12 +11,13 @@ import (
 // DB function
 func DB() *sql.DB {
 
-	user := os.Getenv("DB_USER")
-	password := os.Getenv("DB_PASSWORD")
-	host := os.Getenv("DB_HOST")
-	_db := os.Getenv("DB")
+	user := os.Getenv("RDS_USERNAME")
+	password := os.Getenv("RDS_PASSWORD")
+	host := os.Getenv("RDS_HOSTNAME")
+	port := os.Getenv("RDS_PORT")
+	_db := os.Getenv("RDS_DB_NAME")
 
-	db, _ := sql.Open("mysql", user+":"+password+"@tcp("+host+":3306)/"+_db)
+	db, _ := sql.Open("mysql", user+":"+password+"@tcp("+host+":" + port +")/"+_db)
 	err := db.Ping()
 	if err != nil {
 		panic(err)
