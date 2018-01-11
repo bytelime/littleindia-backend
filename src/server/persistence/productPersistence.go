@@ -1,3 +1,5 @@
+package persistence
+
 func addProduct(){}
 
 func updateProduct(){}

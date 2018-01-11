@@ -2,17 +2,32 @@ package routes
 
 import (
 	"github.com/kataras/iris"
-	CO "server/config"
+	DB "server/persistence"
+	"fmt"
+	"log"
 )
 
 func Call(ctx iris.Context) {
 
-	db := CO.DB()
+	var msg string
 
-	stmt, _ := db.Prepare("INSERT INTO posts(title, content, createdBy, createdAt) VALUES (?, ?, ?, ?)")
-	rs, _ := stmt.Exec("title", "content", "xD", "123")
+	log.Printf("Entro al call")
+
+	err := DB.AddCategory("Prueba")
+
+	log.Printf("Pase el addCategory")
+
+	if (err != nil){
+		msg = "OK"
+	} else {
+		msg = err.Error()
+	}
+
+	s := fmt.Sprintf("Hola, el mensaje es %s", msg)
+    log.Printf(s)
 
 	json(ctx, map[string]interface{}{
-		"mensaje": rs,
+		"mensaje": msg,
 	})
+
 }

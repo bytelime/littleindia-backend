@@ -25,7 +25,7 @@ func main() {
 
 	api := app.Party("/api")
 	{
-		api.Post("/call", R.Call)
+		api.Get("/call", R.Call)
 	}
 
 	/* El redirect no anda
