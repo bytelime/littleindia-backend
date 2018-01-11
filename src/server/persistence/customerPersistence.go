@@ -1,6 +1,12 @@
 package persistence
 
-func addCustomer(){}
+import (
+)
+
+
+func AddCustomer(name string, email string, phone string){
+
+}
 
 func updateCustomer(){}
 

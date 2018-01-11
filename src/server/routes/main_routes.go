@@ -2,6 +2,7 @@ package routes
 
 import (
 	CO "server/config"
+	DB "server/persistence"
 	"github.com/kataras/iris"
 )
 
@@ -10,7 +11,7 @@ func Index(ctx iris.Context) {
 	loggedIn(ctx, "/welcome")
 
 	id, _ := CO.AllSessions(ctx)
-	db := CO.DB()
+	db := DB.DB()
 	var (
 		postID    int
 		title     string
@@ -40,7 +41,7 @@ func Index(ctx iris.Context) {
 		"title":   "Home",
 		"session": ses(ctx),
 		"posts":   feeds,
-		"GET":     CO.Get,
+		"GET":     "xD",
 	})
 }
 
