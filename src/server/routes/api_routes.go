@@ -15,7 +15,7 @@ func Call(ctx iris.Context) {
 	if (err == nil){
 		msg = "OK"
 	} else {
-		msg = CO.GetErrorDescription(err)
+		msg = err.(*CO.AppError).Description
 	}
 
 	//DB.RemoveCategory("Prueba")

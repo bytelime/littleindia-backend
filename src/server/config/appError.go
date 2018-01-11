@@ -6,23 +6,20 @@ import (
 	"os"
 )
 
-type appError struct {
-    code string
+type AppError struct {
+    Code string
+	Description string
 }
 
 var (
   Log *log.Logger
 )
 
-var DBerrorDescriptions = map[string]string{
-  "open": "100",
-  "alreadyExists": "101",
+var DBerrorDescriptions = map[string]AppError{
+  "open": {"100","Could not ping database."},
+  "alreadyExists": {"101","Already exists in database."},
 }
 
-var DBErrorsCodeToDescription = map[string]string{
-  "100": "Could not ping database.",
-  "101": "Already exists in database.",
-}
 
 func init() {
 	
@@ -37,27 +34,25 @@ func init() {
 	Log = log.New(file, "", log.LstdFlags|log.Lshortfile)
 }
 
-func (e *appError) Error() string {  
-    return e.code
+func (e *AppError) Error() string {  
+    return e.Code
 }
 
 
-func ThrowError(key string) *appError{
+func ThrowError(key string) *AppError{
 
-	err := new(appError)
+	err := new(AppError)
 	t := time.Now()
 
-	err.code = DBerrorDescriptions[key]
+	err.Code = DBerrorDescriptions[key].Code
+	err.Description = DBerrorDescriptions[key].Description
 
-	Log.Println(t.Format("2006-01-02 15:04:05") + " -> (" + err.code + ")" + DBErrorsCodeToDescription[err.code])
+	Log.Println(t.Format("2006-01-02 15:04:05") + " -> (" + err.Code + ")" + err.Description)
 
 	return err
 
 }
 
-func GetErrorDescription (e error) string{
-	return DBErrorsCodeToDescription[e.Error()]
-}
 
 //formating
 //	s := fmt.Sprintf("%s %s %s %s %s", user, password, host, port, _db)
