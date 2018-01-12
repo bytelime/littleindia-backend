@@ -1,1 +1,1 @@
-2018/01/12 20:16:50 appError.go:52: 2018-01-12 20:16:50 -> (100)Could not ping database.
+2018/01/12 20:58:47 appError.go:52: 2018-01-12 20:58:47 -> (101)Already exists in database.
