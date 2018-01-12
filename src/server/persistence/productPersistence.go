@@ -11,7 +11,7 @@ type ProductPersistenceManager interface {
     UpdateProduct(*Product, string) error
     GetProductByName(name string) (*Product, error)
     GetAllProducts() ([]*Product, error)
-    RemoveProduct(*Product) error 
+    RemoveProduct(*Product) error
 }
 
 //agregar el modelo aca!
@@ -25,9 +25,9 @@ func AddProduct(product *Product) (int,error) {
 	res , err := stmt.Exec(product.Name, product.PhotoUrl, product.Description, product.Price, product.HasStock, product.CategoryId, product.SubCategoryId)
 
 	if err != nil {
-		
+
 		me, ok := err.(*mysql.MySQLError)
-		
+
 		if !ok {
       		return -1, err
     	}
@@ -74,7 +74,7 @@ func GetProductByName(prodName string) (*Product, error){
     	price int
     	hasStock int
     	categoryId int
-    	subCategoryId int 
+    	subCategoryId int
 	)
 
 	row := db.QueryRow("SELECT * FROM Products WHERE name=?", prodName)
@@ -83,7 +83,7 @@ func GetProductByName(prodName string) (*Product, error){
 	if err != nil {
 
 		me, ok := err.(*mysql.MySQLError)
-		
+
 		if !ok {
       		return prod, err
     	}
@@ -96,7 +96,7 @@ func GetProductByName(prodName string) (*Product, error){
 	}
 
 	prod = NewProduct(name, photoUrl, description, price, hasStock, categoryId, subCategoryId)
-	prod.Id = id	
+	prod.Id = id
 
 	return prod, nil
 
@@ -118,7 +118,7 @@ func GetAllProducts() ([]*Product, error){
     	price int
     	hasStock int
     	categoryId int
-    	subCategoryId int 
+    	subCategoryId int
 	)
 
 	rows, err := db.Query("SELECT * FROM Products ORDER BY name DESC")
@@ -129,21 +129,21 @@ func GetAllProducts() ([]*Product, error){
 
 	defer rows.Close()
 	for rows.Next() {
-		errScan := rows.Scan(&id, &photoUrl, &description, &price, &hasStock, &categoryId, &subCategoryId)
+		errScan := rows.Scan(&id, &name, &photoUrl, &description, &price, &hasStock, &categoryId, &subCategoryId)
 
-		if (errScan != nil){
+		if errScan != nil {
 			return prodList, errScan
 		}
 
 		prod := NewProduct(name, photoUrl, description, price, hasStock, categoryId, subCategoryId)
-		prod.Id = id	
+		prod.Id = id
 
 		prodList = append(prodList, prod)
 	}
 
 	rowErr := rows.Err()
 
-	if (err != nil){
+	if err != nil {
 		return prodList, rowErr
 	}
 

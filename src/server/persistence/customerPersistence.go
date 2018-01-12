@@ -19,7 +19,7 @@ func AddCustomer(c *Customer) (int, error){
   db:= DB()
   defer db.Close()
 
-  stmt, _ := db.Prepare("INSERT INTO customers(name, email, phone) VALUES(?, ?, ?)")
+  stmt, _ := db.Prepare("INSERT INTO Customers(name, email, phone) VALUES(?, ?, ?)")
 
   res, err := stmt.Exec(c.Name, c.Email, c.Phone)
 
