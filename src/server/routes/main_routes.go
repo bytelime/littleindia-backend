@@ -1,46 +1,23 @@
 package routes
 
 import (
-	CO "server/config"
 	DB "server/persistence"
+	M "server/models"
 	"github.com/kataras/iris"
 )
 
 // Index route
 func Index(ctx iris.Context) {
-	loggedIn(ctx, "/welcome")
+	//loggedIn(ctx, "/welcome")
 
-	id, _ := CO.AllSessions(ctx)
-	db := DB.DB()
-	var (
-		postID    int
-		title     string
-		content   string
-		createdBy int
-		createdAt string
-	)
-	feeds := []interface{}{}
-
-	stmt, _ := db.Prepare("SELECT posts.postID, posts.title, posts.content, posts.createdBy, posts.createdAt from posts, follow WHERE follow.followBy=? AND follow.followTo = posts.createdBy ORDER BY posts.postID DESC")
-	rows, qErr := stmt.Query(id)
-	CO.Err(qErr)
-
-	for rows.Next() {
-		rows.Scan(&postID, &title, &content, &createdBy, &createdAt)
-		feed := map[string]interface{}{
-			"postID":    postID,
-			"title":     title,
-			"content":   content,
-			"createdBy": createdBy,
-			"createdAt": createdAt,
-		}
-		feeds = append(feeds, feed)
-	}
+	catList, _ := DB.GetAllCategories()
+	var emptyArray []*M.Product
 
 	renderTemplate(ctx, "index", iris.Map{
 		"title":   "Home",
-		"session": ses(ctx),
-		"posts":   feeds,
+		"session": "session",
+		"products":   emptyArray,
+		"categories": catList,
 		"GET":     "xD",
 	})
 }
@@ -48,6 +25,7 @@ func Index(ctx iris.Context) {
 // Welcome route
 func Welcome(ctx iris.Context) {
 	notLoggedIn(ctx)
+
 	renderTemplate(ctx, "welcome", iris.Map{
 		"title": "Welcome",
 	})

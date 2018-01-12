@@ -3,20 +3,15 @@
 <div class="notes_wrapper">
   <div class="home">
 
-    <div class="home_info">
-      <span>{{ len .posts }} Notes</span>
-      <a href="/create_post" class="pri_btn">Create Post</a>
-    </div>
-
-    {{ if not .posts }}
-      {{ template "nothing" "No posts for you. Go ahead and create one!!" }}
+    {{ if not .products }}
+      {{ template "nothing" "No hay productiños." }}
     {{ end }}
 
-    {{ if .posts }}
-      {{ template "post" . }}
+    {{ if .products }}
+      {{ template "nothing" "xD" }}
     {{ end }}
 
-    {{ if .posts }}
+    {{ if .products }}
       {{ template "end" }}
     {{ end }}
 
