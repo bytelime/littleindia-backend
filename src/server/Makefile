@@ -27,7 +27,7 @@ deploy: clean
 	@echo "--> preparing deploy..."
 	@GOARCH=amd64 GOOS=linux go build $(PACKAGE) -o deployed-bin/$(BINARY_NAME) || (echo "Compilation error" && exit 1)
 	@echo "--> testing..."
-	##@go test -v ./tests
+	#@go test -v ./tests
 	@echo "--> packing js..."
 	@webpack
 	@echo "--> deploying..."
