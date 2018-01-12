@@ -18,6 +18,8 @@ var (
 var DBerrorDescriptions = map[string]AppError{
   "open": {"100","Could not ping database."},
   "alreadyExists": {"101","Already exists in database."},
+  "doesntExist": {"102","Doesnt exist in database."},
+
 }
 
 
