@@ -63,6 +63,7 @@ func GetCustomerByOrderId(orderId int) (*Customer, error){
   db:=DB()
   defer db.Close()
   var customer *Customer
+
   var (
     id int
     name string

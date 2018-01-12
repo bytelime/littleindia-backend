@@ -21,7 +21,7 @@ func AddOrder(o *Order) (int, error){
   db:= DB()
   defer db.Close()
 
-  stmt, _ := db.Prepare("INSERT INTO Orders(id, productId, customerId) VALUES(?, ?)")
+  stmt, _ := db.Prepare("INSERT INTO Orders(id, productId, customerId) VALUES(?, ?, ?)")
 
   res, err := stmt.Exec(o.Id, o.Product.Id, o.Customer.Id)
 
@@ -109,6 +109,7 @@ func GetOrders(oid int, cid int) ([]*Order, error){
     cMail string
     query string
   )
+
   query = "SELECT o.id, " +
   "c.id, c.name, c.phone, c.email, " +
     "p.id, p.name, p.photoUrl, p.description, p.price, p.hasStock, p.categoryId, p.subCategoryId " +
@@ -137,6 +138,7 @@ func GetOrders(oid int, cid int) ([]*Order, error){
     if errScan != nil {
       return oList, errScan
     }
+
     prod := NewProduct(pName, pUrl, pDesc, pPrice, pSub, pCat, pSub)
     prod.Id = productId
     cust := NewCustomer(cName, cMail, cPhone)
