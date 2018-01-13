@@ -29,6 +29,15 @@ func main() {
 		api.Get("/call", R.Call)
 	}
 
+	//todavia no anda
+	admin := app.Party("admin.")
+	{
+		// admin.domain.com
+		//admin.StaticWeb("/", "./public")
+		admin.Get("/", R.Welcome)
+		
+	}
+
 	/* El redirect no anda
 	//80 el port en PROD
 	target, _ := url.Parse("https://localhost:7668")
@@ -44,6 +53,6 @@ func main() {
      	port = "5000"
      }
 
-	app.Run(iris.Addr(":"+port))
+	app.Run(iris.Addr("localhost:"+port))
 
 }
