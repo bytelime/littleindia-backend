@@ -11,11 +11,11 @@ import (
 // DB function
 func DB() *sql.DB {
 
-	user := os.Getenv("DB_USER")
-	password := os.Getenv("DB_PASSWORD")
-	host := os.Getenv("DB_HOST")
-	port := os.Getenv("DB_PORT")
-	_db := os.Getenv("DB")
+	user := os.Getenv("RDS_USERNAME")
+	password := os.Getenv("RDS_PASSWORD")
+	host := os.Getenv("RDS_HOSTNAME")
+	port := os.Getenv("RDS_PORT")
+	_db := os.Getenv("RDS_DB_NAME")
 
 	log.Print(user, password, host)
 
