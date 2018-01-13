@@ -440,7 +440,7 @@ select {
         top: 2px; }
       .note .note_header .note_h_left .note_time {
         font-size: 13px;
-        color: #66757f;
+        color: red !important;
         position: relative;
         top: -1px; }
   .note .note_title, .note .note_content {

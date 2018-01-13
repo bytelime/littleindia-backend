@@ -15,6 +15,7 @@ func main() {
 
 	app.RegisterView(iris.HTML("./views", ".html"))
 	app.StaticWeb("/", "./public")
+	app.OnErrorCode(iris.StatusInternalServerError, R.Error)
 
 	app.Get("/", R.Index)
 	app.Get("/welcome", R.Welcome)

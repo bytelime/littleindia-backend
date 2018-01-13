@@ -15,6 +15,8 @@ type ProductPersistenceManager interface {
 }
 
 //agregar el modelo aca!
+//mejorar mas objetoso, mejorar calls y hacer llamado por categoria, y por subcat
+//paginate
 
 func AddProduct(product *Product) (int,error) {
 

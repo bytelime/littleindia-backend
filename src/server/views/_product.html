@@ -1,0 +1,16 @@
+{{ define "product" }}
+
+
+{{ range $product := .products }}
+  <a href="/" class="note">
+    <div class="note_header common_header">
+      <img src={{ $product.PhotoUrl }} alt="" srcset="">
+      <div class="note_h_left">
+        <span class="note_username">{{ $product.Name }}</span>
+        <span class='note_time'>${{ $product.Price }}</span>
+      </div>
+    </div>
+  </a>
+{{ end }}
+
+{{ end }}

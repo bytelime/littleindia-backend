@@ -2,7 +2,6 @@ package routes
 
 import (
 	DB "server/persistence"
-	M "server/models"
 	CO "server/config"
 	"github.com/kataras/iris"
 )
@@ -13,12 +12,14 @@ func Index(ctx iris.Context) {
 
 	CO.Err(nil)
 	catList, _ := DB.GetAllCategories()
-	var emptyArray []*M.Product
+	prodList, _ := DB.GetAllProducts()
+
+	//var emptyArray []*M.Product
 
 	renderTemplate(ctx, "index", iris.Map{
 		"title":   "Home",
 		"session": "session",
-		"products":   emptyArray,
+		"products":   prodList,
 		"categories": catList,
 		"GET":     "xD",
 	})
@@ -36,6 +37,13 @@ func Welcome(ctx iris.Context) {
 // NotFound route
 func NotFound(ctx iris.Context) {
 	renderTemplate(ctx, "404", iris.Map{
+		"title":   "Oops!! Error",
+		"session": ses(ctx),
+	})
+}
+
+func Error(ctx iris.Context) {
+	renderTemplate(ctx, "500", iris.Map{
 		"title":   "Oops!! Error",
 		"session": ses(ctx),
 	})

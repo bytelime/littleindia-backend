@@ -17,8 +17,6 @@ func DB() *sql.DB {
 	port := os.Getenv("RDS_PORT")
 	_db := os.Getenv("RDS_DB_NAME")
 
-	log.Print(user, password, host)
-
 	db, _ := sql.Open("mysql", user+":"+password+"@tcp("+host+":" + port +")/"+_db)
 	err := db.Ping()
 
