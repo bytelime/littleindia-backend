@@ -17,8 +17,6 @@ func DB() *sql.DB {
 	port := os.Getenv("DB_PORT")
 	_db := os.Getenv("DB")
 
-	log.Print(user,password, host,port)
-
 	db, _ := sql.Open("mysql", user+":"+password+"@tcp("+host+":" + port +")/"+_db)
 	err := db.Ping()
 
