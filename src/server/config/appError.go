@@ -5,6 +5,7 @@ import (
 	"time"
 	"os"
 	"path/filepath"
+	"fmt"
 
 )
 
@@ -35,7 +36,7 @@ func init() {
 }
 
 func (e *AppError) Error() string {  
-    return e.Code
+    return fmt.Sprintf("%d - %s", e.Code, e.Description)
 }
 
 
