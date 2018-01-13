@@ -27,13 +27,9 @@ var DBerrorDescriptions = map[string]AppError{
 
 func init() {
 	
-	logpath , _ := filepath.Abs("./logs/errors.log")
+	logpath , _ := filepath.Abs(filepath.Dir(os.Args[0]) + "/logs/errors.log")
 
-	var file, err1 = os.Create(logpath)
-	
-	if err1 != nil {
-		panic(err1)
-	}
+	var file, _ = os.Create(logpath)
 
 	Log = log.New(file, "", log.LstdFlags|log.Lshortfile)
 }

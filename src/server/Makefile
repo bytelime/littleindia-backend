@@ -7,7 +7,7 @@ default: run
 clean: ## Trash binary files
 	@echo "--> cleaning..."
 	@go clean || (echo "Unable to clean project" && exit 1)
-	@rm -rf $(GOPATH)/bin/$(BINARY_NAME) 2> /dev/null
+	@rm -rf $(GOPATH)/src/server/deployed-bin/$(BINARY_NAME) 2> /dev/null
 	@echo "Clean OK"
 
 test: ## Run all tests
@@ -16,12 +16,12 @@ test: ## Run all tests
 
 install: clean ## Compile sources and build binary
 	@echo "--> installing..."
-	@go install $(PACKAGE) || (echo "Compilation error" && exit 1)
+	@go build $(PACKAGE) -o deployed-bin/$(BINARY_NAME) || (echo "Compilation error" && exit 1)
 	@echo "Install OK"
 
 run: install ## Run your application
 	@echo "--> running application..."
-	@/$(GOBIN)/$(BINARY_NAME)
+	@/$(GOPATH)/src/server/deployed-bin/$(BINARY_NAME)
 
 deploy: clean 
 	@echo "--> preparing deploy..."
