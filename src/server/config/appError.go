@@ -25,7 +25,8 @@ var DBerrorDescriptions = map[string]AppError{
 
 func init() {
 	
-	var logpath = os.ExpandEnv("$GOLOGS/errors.log")
+	goLogs := os.Getenv("GOLOGS")
+	var logpath = goLogs + "/errors.log"
 
 	var file, err1 = os.Create(logpath)
 	
