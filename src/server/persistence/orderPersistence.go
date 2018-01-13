@@ -12,9 +12,9 @@ type OrderPersistenceManager interface {
   UpdateOrder(*Order, string) error
   RemovePartOrder(*Order) error
   RemoveFullOrder(*Order) error
-  GetOrderById(int) (*Order, error)
-  GetOrdersByCustomerId(int) (*Order, error)
-  GetAllOrders(int) ([]*Order, error)
+  GetOrdersById(int) ([]*Order, error)
+  GetOrdersByCustomerId(int) ([]*Order, error)
+  GetAllOrders() ([]*Order, error)
 }
 
 func AddOrder(o *Order) (int, error){
