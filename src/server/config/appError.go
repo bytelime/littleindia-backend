@@ -4,6 +4,8 @@ import (
 	"log"
 	"time"
 	"os"
+	"path/filepath"
+
 )
 
 type AppError struct {
@@ -25,8 +27,7 @@ var DBerrorDescriptions = map[string]AppError{
 
 func init() {
 	
-	goLogs := os.Getenv("GOLOGS")
-	var logpath = goLogs + "/errors.log"
+	logpath , _ := filepath.Abs("./logs/errors.log")
 
 	var file, err1 = os.Create(logpath)
 	
