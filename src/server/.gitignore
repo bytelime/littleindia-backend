@@ -6,3 +6,5 @@ node_modules/
 !.elasticbeanstalk/*.global.yml
 deployed-bin/logs/
 .env
+../../bin
+../../pkg
